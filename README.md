@@ -53,7 +53,7 @@ If this vulnerability were exploited, the consequences would be severe:
 
 ---
 
-## **Recommendation**
+### **Recommendation**
 To mitigate this vulnerability, the following changes should be implemented:
 
 ### **1. Restrict `setOFTContract` to Trusted Addresses**
@@ -91,7 +91,7 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-## **Steps to Reproduce**
+### **Steps to Reproduce**
 1. Deploy the `TetherTokenOFTExtension` contract.
 2. Use the `setOFTContract` function to set a malicious address as the `oftContract`.
 3. Call the `mint` function from the malicious `oftContract` address.
@@ -99,7 +99,7 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-## **Mitigation**
+### **Mitigation**
 By implementing the proposed fixes, the risk of unauthorized minting is significantly reduced. The whitelist ensures that only trusted addresses can act as the `oftContract`, while the validation step prevents accidental or malicious misconfigurations.
 
 ---
