@@ -23,9 +23,9 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 - The resulting imbalance would devalue the token and cause widespread panic among users.
 
 #### **Proof of Concept**
-1. Deploy the TetherTokenOFTExtension contract.
-2. Set a malicious address as the oftContract using the setOFTContract function.
-3. Call the mint function from the malicious oftContract address to mint arbitrary amounts of tokens.
+1. Deploy the `TetherTokenOFTExtension` contract.
+2. Set a malicious address as the `oftContract` using the `setOFTContract` function.
+3. Call the mint function from the malicious `oftContract` address to mint arbitrary amounts of tokens.
 4. Observe that the total supply increases without any backing, leading to inflation.
 
 #### **Code Snippet**
