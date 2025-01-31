@@ -160,23 +160,3 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
    ```
    
 ---
-
-#### **Recommendation**
-To mitigate this vulnerability, the following changes should be implemented:
-
-#### **1. Restrict `setOFTContract` to Trusted Addresses**
-- Add a whitelist of trusted addresses that can be set as the `oftContract`.
-- Ensure that only addresses verified through a multi-signature governance process can be added to the whitelist.
-
-#### **2. Add Validation for `oftContract`**
-- Implement a check to ensure that the `oftContract` address is a valid contract and conforms to the expected interface (e.g., `IOFT`).
-
-#### **3. Emergency Pause Mechanism**
-- Introduce a pause mechanism that allows the owner to temporarily disable minting in case of suspicious activity.
-
----
-
-#### **Mitigation**
-By implementing the proposed fixes, the risk of unauthorized minting is significantly reduced. The whitelist ensures that only trusted addresses can act as the `oftContract`, while the validation step prevents accidental or malicious misconfigurations.
-
----
