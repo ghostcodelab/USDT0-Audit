@@ -20,7 +20,7 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
    - These tokens could then be bridged back to Ethereum, further exacerbating the inflation.
    - The resulting imbalance would devalue the token and cause widespread panic among users.
 
-3. **Code Snippet**:
+#### 3. **Code Snippet**:
 // Vulnerable function in TetherTokenOFTExtension.sol
 function mint(address _to, uint256 _amount) external override onlyOFT {
     _mint(_to, _amount);
@@ -33,7 +33,7 @@ function setOFTContract(address _oftContract) external onlyOwner {
    ```
 ---
 
-4. **Attack Scenario**:
+#### 4. **Attack Scenario**:
    - A malicious actor gains control of the `oftContract` address.
    - They call the `mint` function to create unbacked tokens on a remote chain.
    - These tokens are then bridged back to Ethereum, flooding the market with unbacked USDT.
