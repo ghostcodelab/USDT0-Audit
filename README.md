@@ -52,7 +52,7 @@ Below is the PoC using the Immunefi Forge template:
 pragma solidity 0.8.4;
 
 import "forge-std/Test.sol";
-import "../src/TetherTokenOFTExtension.sol"; // Path to the vulnerable contract
+import "contracts/Wrappers/OFTExtension.sol"; // Path to the vulnerable contract
 
 contract UnauthorizedMintingTest is Test {
     TetherTokenOFTExtension public oftExtension;
