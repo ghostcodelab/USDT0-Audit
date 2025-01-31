@@ -29,12 +29,6 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 2. They call the `mint` function to create unbacked tokens on a remote chain.
 3. These tokens are then bridged back to Ethereum, flooding the market with unbacked USDT.
 
-#### **Proof of Concept**
-1. Deploy the `TetherTokenOFTExtension` contract.
-2. Set a malicious address as the `oftContract` using the `setOFTContract` function.
-3. Call the mint function from the malicious `oftContract` address to mint arbitrary amounts of tokens.
-4. Observe that the total supply increases without any backing, leading to inflation.
-
 #### **Code Snippet**
 ```solidity
 // Vulnerable function in TetherTokenOFTExtension.sol
@@ -47,6 +41,12 @@ function setOFTContract(address _oftContract) external onlyOwner {
     oftContract = _oftContract;
 }
 ```
+
+#### **Proof of Concept**
+1. Deploy the `TetherTokenOFTExtension` contract.
+2. Set a malicious address as the `oftContract` using the `setOFTContract` function.
+3. Call the mint function from the malicious `oftContract` address to mint arbitrary amounts of tokens.
+4. Observe that the total supply increases without any backing, leading to inflation.
 
 ---
 
