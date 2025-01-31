@@ -28,7 +28,7 @@ function mint(address _to, uint256 _amount) external override onlyOFT {
 function setOFTContract(address _oftContract) external onlyOwner {
     oftContract = _oftContract;
 }
-   ```
+
 ---
 
 #### 4. **Attack Scenario**:
