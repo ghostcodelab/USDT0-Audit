@@ -32,6 +32,7 @@ function setOFTContract(address _oftContract) external onlyOwner {
     oftContract = _oftContract;
 }
    ```
+---
 
 4. **Attack Scenario**:
    - A malicious actor gains control of the `oftContract` address.
