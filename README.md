@@ -21,7 +21,6 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
    - The resulting imbalance would devalue the token and cause widespread panic among users.
 
 Code Snippet:
-
 // Vulnerable function in TetherTokenOFTExtension.sol
 function mint(address _to, uint256 _amount) external override onlyOFT {
     _mint(_to, _amount);
