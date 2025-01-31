@@ -44,7 +44,7 @@ function setOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-# **Impact Details**
+### **Impact Details**
 If this vulnerability were exploited, the consequences would be severe:
 1. **Inflation Risk**: Unbacked tokens could be minted on remote chains, inflating the total supply and devaluing the token.
 2. **Economic Damage**: The market could lose confidence in USDT0, leading to a potential de-pegging of the token from its intended value.
