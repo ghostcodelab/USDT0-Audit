@@ -1,19 +1,19 @@
 ### **USDT0 Audit: Unrestricted Minting**
 
-This report highlights a vulnerability in the `OFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
+This report highlights a vulnerability in the `TetherTokenOFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
 
 ---
 
 #### **Brief/Intro**
-The `OFTExtension` contract (`TetherTokenOFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
+The `TetherTokenOFTExtension` contract (`OFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
 
 ---
 
 #### **Vulnerability Details**
-The `OFTExtension` contract is designed to wrap the Tether token and enable cross-chain bridging using LayerZero's Omnichain Fungible Token (OFT) infrastructure. The `setOFTContract` function allows the owner to designate any address as the authorized minter (`oftContract`). This introduces a critical risk:
+The `TetherTokenOFTExtension` contract is designed to wrap the Tether token and enable cross-chain bridging using LayerZero's Omnichain Fungible Token (OFT) infrastructure. The `setOFTContract` function allows the owner to designate any address as the authorized minter (`oftContract`). This introduces a critical risk:
 
 #### **1. Unbacked Minting**
-- The `mint` function in `TetherTokenOFTExtension.sol` overrides the original `mint` function, which is callable only by the owner. Instead, the new `mint` function can only be called by the `oftContract`.
+- The `mint` function in `OFTExtension.sol` overrides the original `mint` function, which is callable only by the owner. Instead, the new `mint` function can only be called by the `oftContract`.
 - If the `oftContract` is set to a malicious or compromised address, it could mint arbitrary amounts of tokens on remote chains without corresponding backing on Ethereum.
 - This undermines the integrity of the token's supply mechanism, as the system assumes that all minted tokens on remote chains are backed by locked USDT on Ethereum.
 
