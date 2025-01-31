@@ -22,12 +22,12 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 - These tokens could then be bridged back to Ethereum, further exacerbating the inflation.
 - The resulting imbalance would devalue the token and cause widespread panic among users.
 
+---
+
 #### **Attack Scenario**
 1. A malicious actor gains control of the `oftContract` address.
 2. They call the `mint` function to create unbacked tokens on a remote chain.
 3. These tokens are then bridged back to Ethereum, flooding the market with unbacked USDT.
-
----
 
 #### **Proof of Concept**
 1. Deploy the `TetherTokenOFTExtension` contract.
