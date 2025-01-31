@@ -92,7 +92,7 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
 ---
 
 ## **Steps to Reproduce**
-1. Deploy the `<span style="color:red">TetherTokenOFTExtension</span>` contract.
+1. Deploy the <span style="color:red">`TetherTokenOFTExtension`</span> contract.
 2. Use the `setOFTContract` function to set a malicious address as the `oftContract`.
 3. Call the `mint` function from the malicious `oftContract` address.
 4. Verify that the total supply increases without any backing.
