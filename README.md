@@ -2,6 +2,8 @@
 
 Unrestricted Minting via OFTExtension Contract
 
+This bug bounty report highlights a potential vulnerability in the OFTExtension contract that could lead to unauthorized minting of unbacked tokens.
+
 #### **Brief/Intro**
 The `OFTExtension` contract (`TetherTokenOFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
 
