@@ -71,7 +71,7 @@ contract UnauthorizedMintingTest is Test {
 
         // Step 2: Malicious actor mints unbacked tokens
         uint256 initialSupply = oftExtension.totalSupply();
-        uint256 mintAmount = 1_000_000 * 1e6; // Mint 1 million USDT
+        uint256 mintAmount = 6_000_000 * 1e6; // Mint 6 million USDT
 
         vm.startPrank(maliciousActor);
         oftExtension.mint(address(this), mintAmount); // Mint tokens to this contract
