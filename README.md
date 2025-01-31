@@ -105,13 +105,6 @@ contract UnauthorizedMintingTest is Test {
 
 ---
 
-#### **Expected Output**
-When you run the PoC using Foundry (`forge test`), the test should pass, confirming that the vulnerability exists. Specifically:
-- The total supply increases by the minted amount.
-- The malicious actor successfully receives the minted tokens.
-
----
-
 #### **Mitigation**
 To prevent this vulnerability, the following changes should be implemented:
 1. Restrict the `setOFTContract` function to only allow trusted addresses.
@@ -159,4 +152,11 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
    forge test
    ```
    
+---
+
+#### **Expected Output**
+When you run the PoC using Foundry (`forge test`), the test should pass, confirming that the vulnerability exists. Specifically:
+- The total supply increases by the minted amount.
+- The malicious actor successfully receives the minted tokens.
+
 ---
