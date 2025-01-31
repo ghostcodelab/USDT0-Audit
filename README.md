@@ -24,6 +24,15 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 
 ---
 
+#### **Impact Details**
+If this vulnerability were exploited, the consequences would be severe:
+1. **Inflation Risk**: Unbacked tokens could be minted on remote chains, inflating the total supply and devaluing the token.
+2. **Economic Damage**: The market could lose confidence in USDT0, leading to a potential de-pegging of the token from its intended value.
+3. **Financial Losses**: Users holding USDT0 could suffer financial losses due to the devaluation caused by the inflated supply.
+4. **Reputation Damage**: The exploit would severely damage the reputation of the USDT0 project, potentially leading to a loss of users and partners.
+
+---
+
 #### **Attack Scenario**
 1. A malicious actor gains control of the `oftContract` address.
 2. They call the `mint` function to create unbacked tokens on a remote chain.
@@ -46,15 +55,6 @@ function mint(address _to, uint256 _amount) external override onlyOFT {
     _mint(_to, _amount);
 }
 ```
----
-
-#### **Impact Details**
-If this vulnerability were exploited, the consequences would be severe:
-1. **Inflation Risk**: Unbacked tokens could be minted on remote chains, inflating the total supply and devaluing the token.
-2. **Economic Damage**: The market could lose confidence in USDT0, leading to a potential de-pegging of the token from its intended value.
-3. **Financial Losses**: Users holding USDT0 could suffer financial losses due to the devaluation caused by the inflated supply.
-4. **Reputation Damage**: The exploit would severely damage the reputation of the USDT0 project, potentially leading to a loss of users and partners.
-
 ---
 
 #### **Recommendation**
