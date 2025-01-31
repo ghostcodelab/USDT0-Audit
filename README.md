@@ -1,5 +1,8 @@
 ### **USDT0 Audit**
 
+Unrestricted Minting via OFTExtension Contract
+Severity: Medium
+
 #### **Brief/Intro**
 The `OFTExtension` contract (`TetherTokenOFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
 
