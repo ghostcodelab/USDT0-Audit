@@ -1,28 +1,28 @@
-## **USDT0 Audit: Unrestricted Minting**
+### **USDT0 Audit: Unrestricted Minting**
 
 This report highlights a potential vulnerability in the `OFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
 
 ---
 
-### **Brief/Intro**
+#### **Brief/Intro**
 The `OFTExtension` contract (`TetherTokenOFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
 
 ---
 
-### **Vulnerability Details**
+#### **Vulnerability Details**
 The `OFTExtension` contract is designed to wrap the Tether token and enable cross-chain bridging using LayerZero's Omnichain Fungible Token (OFT) infrastructure. The `setOFTContract` function allows the owner to designate any address as the authorized minter (`oftContract`). This introduces a critical risk:
 
-### **1. Unbacked Minting**
+#### **1. Unbacked Minting**
 - The `mint` function in `TetherTokenOFTExtension.sol` overrides the original `mint` function, which is callable only by the owner. Instead, the new `mint` function can only be called by the `oftContract`.
 - If the `oftContract` is set to a malicious or compromised address, it could mint arbitrary amounts of tokens on remote chains without corresponding backing on Ethereum.
 - This undermines the integrity of the token's supply mechanism, as the system assumes that all minted tokens on remote chains are backed by locked USDT on Ethereum.
 
-### **2. Impact of Exploitation**
+#### **2. Impact of Exploitation**
 - An attacker could mint unbacked tokens on remote chains, inflating the total supply.
 - These tokens could then be bridged back to Ethereum, further exacerbating the inflation.
 - The resulting imbalance would devalue the token and cause widespread panic among users.
 
-### **Code Snippet**
+#### **Code Snippet**
 ```solidity
 // Vulnerable function in TetherTokenOFTExtension.sol
 function mint(address _to, uint256 _amount) external override onlyOFT {
@@ -37,14 +37,14 @@ function setOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-### **Attack Scenario**
+#### **Attack Scenario**
 1. A malicious actor gains control of the `oftContract` address.
 2. They call the `mint` function to create unbacked tokens on a remote chain.
 3. These tokens are then bridged back to Ethereum, flooding the market with unbacked USDT.
 
 ---
 
-### **Impact Details**
+#### **Impact Details**
 If this vulnerability were exploited, the consequences would be severe:
 1. **Inflation Risk**: Unbacked tokens could be minted on remote chains, inflating the total supply and devaluing the token.
 2. **Economic Damage**: The market could lose confidence in USDT0, leading to a potential de-pegging of the token from its intended value.
@@ -91,7 +91,7 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-### **Steps to Reproduce**
+#### **Steps to Reproduce**
 1. Deploy the `TetherTokenOFTExtension` contract.
 2. Use the `setOFTContract` function to set a malicious address as the `oftContract`.
 3. Call the `mint` function from the malicious `oftContract` address.
@@ -99,7 +99,7 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-### **Mitigation**
+#### **Mitigation**
 By implementing the proposed fixes, the risk of unauthorized minting is significantly reduced. The whitelist ensures that only trusted addresses can act as the `oftContract`, while the validation step prevents accidental or malicious misconfigurations.
 
 ---
