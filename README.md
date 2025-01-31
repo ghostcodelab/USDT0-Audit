@@ -1,15 +1,15 @@
-# **USDT0 Audit: Unrestricted Minting**
+## **USDT0 Audit: Unrestricted Minting**
 
 This report highlights a potential vulnerability in the `OFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
 
 ---
 
-## **Brief/Intro**
+### **Brief/Intro**
 The `OFTExtension` contract (`TetherTokenOFTExtension.sol`) allows the admin to set any address as the authorized minter (`oftContract`). This creates a risk where an attacker or compromised admin could mint unbacked tokens on remote chains, leading to inflation and devaluation of the token supply. If exploited, this vulnerability could destabilize the USDT0 ecosystem, causing significant financial losses and eroding user trust.
 
 ---
 
-## **Vulnerability Details**
+### **Vulnerability Details**
 The `OFTExtension` contract is designed to wrap the Tether token and enable cross-chain bridging using LayerZero's Omnichain Fungible Token (OFT) infrastructure. The `setOFTContract` function allows the owner to designate any address as the authorized minter (`oftContract`). This introduces a critical risk:
 
 ### **1. Unbacked Minting**
@@ -22,7 +22,7 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 - These tokens could then be bridged back to Ethereum, further exacerbating the inflation.
 - The resulting imbalance would devalue the token and cause widespread panic among users.
 
-#### **Code Snippet**
+### **Code Snippet**
 ```solidity
 // Vulnerable function in TetherTokenOFTExtension.sol
 function mint(address _to, uint256 _amount) external override onlyOFT {
@@ -56,17 +56,17 @@ If this vulnerability were exploited, the consequences would be severe:
 ### **Recommendation**
 To mitigate this vulnerability, the following changes should be implemented:
 
-#### **1. Restrict `setOFTContract` to Trusted Addresses**
+### **1. Restrict `setOFTContract` to Trusted Addresses**
 - Add a whitelist of trusted addresses that can be set as the `oftContract`.
 - Ensure that only addresses verified through a multi-signature governance process can be added to the whitelist.
 
-#### **2. Add Validation for `oftContract`**
+### **2. Add Validation for `oftContract`**
 - Implement a check to ensure that the `oftContract` address is a valid contract and conforms to the expected interface (e.g., `IOFT`).
 
-#### **3. Emergency Pause Mechanism**
+### **3. Emergency Pause Mechanism**
 - Introduce a pause mechanism that allows the owner to temporarily disable minting in case of suspicious activity.
 
-#### **Proposed Fix**
+### **Proposed Fix**
 ```solidity
 // Whitelist for trusted OFT contracts
 mapping(address => bool) public trustedOFTContracts;
