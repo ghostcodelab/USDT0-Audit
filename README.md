@@ -37,14 +37,14 @@ function setOFTContract(address _oftContract) external onlyOwner {
 
 ---
 
-## **Attack Scenario**
+### **Attack Scenario**
 1. A malicious actor gains control of the `oftContract` address.
 2. They call the `mint` function to create unbacked tokens on a remote chain.
 3. These tokens are then bridged back to Ethereum, flooding the market with unbacked USDT.
 
 ---
 
-## **Impact Details**
+# **Impact Details**
 If this vulnerability were exploited, the consequences would be severe:
 1. **Inflation Risk**: Unbacked tokens could be minted on remote chains, inflating the total supply and devaluing the token.
 2. **Economic Damage**: The market could lose confidence in USDT0, leading to a potential de-pegging of the token from its intended value.
