@@ -1,6 +1,7 @@
 ### **USDT0 Audit**
 
 Unrestricted Minting via OFTExtension Contract
+
 Severity: Medium
 
 #### **Brief/Intro**
