@@ -53,20 +53,20 @@ If this vulnerability were exploited, the consequences would be severe:
 
 ---
 
-### **Recommendation**
+#### **Recommendation**
 To mitigate this vulnerability, the following changes should be implemented:
 
-### **1. Restrict `setOFTContract` to Trusted Addresses**
+#### **1. Restrict `setOFTContract` to Trusted Addresses**
 - Add a whitelist of trusted addresses that can be set as the `oftContract`.
 - Ensure that only addresses verified through a multi-signature governance process can be added to the whitelist.
 
-### **2. Add Validation for `oftContract`**
+#### **2. Add Validation for `oftContract`**
 - Implement a check to ensure that the `oftContract` address is a valid contract and conforms to the expected interface (e.g., `IOFT`).
 
-### **3. Emergency Pause Mechanism**
+#### **3. Emergency Pause Mechanism**
 - Introduce a pause mechanism that allows the owner to temporarily disable minting in case of suspicious activity.
 
-### **Proposed Fix**
+#### **Proposed Fix**
 ```solidity
 // Whitelist for trusted OFT contracts
 mapping(address => bool) public trustedOFTContracts;
