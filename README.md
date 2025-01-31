@@ -89,9 +89,9 @@ To mitigate this vulnerability, the following changes should be implemented:
    ---
    
 **Steps to Reproduce**:
-1. Deploy the TetherTokenOFTExtension contract.
-2. Use the setOFTContract function to set a malicious address as the oftContract.
-3. Call the mint function from the malicious oftContract address.
+1. Deploy the 'TetherTokenOFTExtension' contract.
+2. Use the 'setOFTContract' function to set a malicious address as the 'oftContract'.
+3. Call the mint function from the malicious 'oftContract' address.
 4. Verify that the total supply increases without any backing.
  
 **Mitigation**:
