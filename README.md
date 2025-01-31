@@ -1,6 +1,4 @@
-### **USDT0 Audit**
-
-Unrestricted Minting
+### **USDT0 Audit: Unrestricted Minting**
 
 This bug bounty report highlights a potential vulnerability in the OFTExtension contract that could lead to unauthorized minting of unbacked tokens.
 
