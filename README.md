@@ -45,8 +45,6 @@ If this vulnerability were exploited, the consequences would be severe:
 3. **Financial Losses**: Users holding USDT0 could suffer financial losses due to the devaluation caused by the inflated supply.
 4. **Reputation Damage**: The exploit would severely damage the reputation of the USDT0 project, potentially leading to a loss of users and partners.
 
-This vulnerability qualifies as a **medium-severity issue** under the Immunefi classification, as it directly impacts the economic integrity of the token and could lead to significant financial losses if exploited.
-
 ---
 
 #### **Recommendation**
