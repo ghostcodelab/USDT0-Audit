@@ -64,7 +64,6 @@ To mitigate this vulnerability, the following changes should be implemented:
    - Introduce a pause mechanism that allows the owner to temporarily disable minting in case of suspicious activity.
 
 4. **Proposed Fix**:
-   ```solidity
    // Whitelist for trusted OFT contracts
    mapping(address => bool) public trustedOFTContracts;
 
@@ -84,7 +83,7 @@ To mitigate this vulnerability, the following changes should be implemented:
    function removeTrustedOFTContract(address _oftContract) external onlyOwner {
        trustedOFTContracts[_oftContract] = false;
    }
-   ```
+
    ---
    
 **Steps to Reproduce**:
