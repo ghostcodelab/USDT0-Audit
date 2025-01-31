@@ -1,6 +1,6 @@
 ### **USDT0 Audit: Unrestricted Minting**
 
-This report highlights a potential vulnerability in the `OFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
+This report highlights a vulnerability in the `OFTExtension` contract that could lead to unauthorized minting of unbacked tokens.
 
 ---
 
@@ -120,18 +120,22 @@ To prevent this vulnerability, the following changes should be implemented:
 Here’s an example fix:
 
 ```solidity
+// Whitelist for trusted OFT contracts
 mapping(address => bool) public trustedOFTContracts;
 
+// Restrict setOFTContract to trusted addresses
 function setOFTContract(address _oftContract) external onlyOwner {
     require(trustedOFTContracts[_oftContract], "OFT: Address not trusted");
     oftContract = _oftContract;
 }
 
+// Add a trusted OFT contract to the whitelist
 function addTrustedOFTContract(address _oftContract) external onlyOwner {
     require(Address.isContract(_oftContract), "OFT: Address must be a contract");
     trustedOFTContracts[_oftContract] = true;
 }
 
+// Remove a trusted OFT contract from the whitelist
 function removeTrustedOFTContract(address _oftContract) external onlyOwner {
     trustedOFTContracts[_oftContract] = false;
 }
@@ -169,29 +173,6 @@ To mitigate this vulnerability, the following changes should be implemented:
 
 #### **3. Emergency Pause Mechanism**
 - Introduce a pause mechanism that allows the owner to temporarily disable minting in case of suspicious activity.
-
-#### **Proposed Fix**
-```solidity
-// Whitelist for trusted OFT contracts
-mapping(address => bool) public trustedOFTContracts;
-
-// Restrict setOFTContract to trusted addresses
-function setOFTContract(address _oftContract) external onlyOwner {
-    require(trustedOFTContracts[_oftContract], "OFT: Address not trusted");
-    oftContract = _oftContract;
-}
-
-// Add a trusted OFT contract to the whitelist
-function addTrustedOFTContract(address _oftContract) external onlyOwner {
-    require(Address.isContract(_oftContract), "OFT: Address must be a contract");
-    trustedOFTContracts[_oftContract] = true;
-}
-
-// Remove a trusted OFT contract from the whitelist
-function removeTrustedOFTContract(address _oftContract) external onlyOwner {
-    trustedOFTContracts[_oftContract] = false;
-}
-```
 
 ---
 
