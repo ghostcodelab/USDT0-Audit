@@ -22,6 +22,12 @@ The `OFTExtension` contract is designed to wrap the Tether token and enable cros
 - These tokens could then be bridged back to Ethereum, further exacerbating the inflation.
 - The resulting imbalance would devalue the token and cause widespread panic among users.
 
+#### **Proof of Concept**
+1. Deploy the TetherTokenOFTExtension contract.
+2. Set a malicious address as the oftContract using the setOFTContract function.
+3. Call the mint function from the malicious oftContract address to mint arbitrary amounts of tokens.
+4. Observe that the total supply increases without any backing, leading to inflation.
+
 #### **Code Snippet**
 ```solidity
 // Vulnerable function in TetherTokenOFTExtension.sol
@@ -88,14 +94,6 @@ function removeTrustedOFTContract(address _oftContract) external onlyOwner {
     trustedOFTContracts[_oftContract] = false;
 }
 ```
-
----
-
-#### **Steps to Reproduce**
-1. Deploy the `TetherTokenOFTExtension` contract.
-2. Use the `setOFTContract` function to set a malicious address as the `oftContract`.
-3. Call the `mint` function from the malicious `oftContract` address.
-4. Verify that the total supply increases without any backing.
 
 ---
 
