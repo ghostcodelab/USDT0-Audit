@@ -91,4 +91,5 @@ To mitigate this vulnerability, the following changes should be implemented:
 4. Verify that the total supply increases without any backing.
  
 **Mitigation**:
+
 By implementing the proposed fixes, the risk of unauthorized minting is significantly reduced. The whitelist ensures that only trusted addresses can act as the oftContract, while the validation step prevents accidental or malicious misconfigurations.
